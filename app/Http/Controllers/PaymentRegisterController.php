@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReportRequest;
-use App\Models\Report;
+use App\Http\Requests\PaymentRegisterRequest;
+use App\Models\register_paymets;
 use Illuminate\Http\Request;
 
-class GenerateReportController extends Controller
+class PaymentRegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $payments = Report::paginate(5);
+        $payments = register_paymets::paginate(5);
         return view('generate_reports.index', compact('payments'));
     }
 
@@ -22,23 +22,23 @@ class GenerateReportController extends Controller
      */
     public function create()
     {
-        $payments = new Report();
+        $payments = new register_paymets();
         return view('generate_reports.create', compact('payments'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ReportRequest $request)
+    public function store(PaymentRegisterRequest $request)
     {
-        Report::create($request->validated());
-        return to_route('generate_data_report.index')->with('status', 'Registro creado');
+        register_paymets::create($request->validated());
+        return redirect()->route('payment_register.index')->with('status', 'Registro creado');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(register_paymets $register_paymets)
     {
         //
     }
@@ -46,17 +46,15 @@ class GenerateReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $payment)
+    public function edit(register_paymets $register_paymets)
     {
-        $payment= Report::find($payment);
-        dd($payment);
-        return view('generate_reports.edit', compact('payment'));
+        return view('generate_reports.edit', compact('register_paymets'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ReportRequest $request, string $id)
+    public function update(PaymentRegisterRequest $request, register_paymets $register_paymets)
     {
         //
     }
@@ -64,7 +62,7 @@ class GenerateReportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(register_paymets $register_paymets)
     {
         //
     }

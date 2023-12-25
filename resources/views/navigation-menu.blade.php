@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('generate_data_report.index') }}" :active="request()->routeIs('generate_data_report.index')">
+                    <x-nav-link href="{{ route('payment_register.index') }}" :active="request()->routeIs('generate_data_report.index')">
                         {{ __('Registrar pagos') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">

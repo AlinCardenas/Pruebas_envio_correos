@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\GenerateReportController;
+use App\Http\Controllers\PaymentRegisterController;
+use App\Http\Controllers\PaymentRegosterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +30,5 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('/generate_data_report', GenerateReportController::class);
+// Route::resource('/generate_data_report', GenerateReportController::class);
+Route::resource('/payment_register', PaymentRegisterController::class);
